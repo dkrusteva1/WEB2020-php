@@ -1,72 +1,60 @@
 <?php 
     $valid=array();
     $error=array();
-    if ($_POST) {
-        $title=$_POST['title'];
-        if (!$title)
+    $maxSizeCourse =150;
+    $maxSizeName=200;
+    $minLengthDescription=10;
+    $numberFileds=5;
+    function validate ($name, $limit, &$valid, &$errors)
+    {
+        $check=$_POST["$name"];
+        if (!$check)
         {
-            $errors['title']="Името е задължително поле";
+            $errors["$name"]="$name е задължително поле";
         }
-        elseif(strlen('title')>150)
+        elseif(strlen("$name")>$limit)
         {
-            $errors['title']="Името трябва да бъде не повече от 150 символа";
-        }
-        else
-        {
-            $valid['title']=$title;
-        }
-        
-        $name=$_POST['name'];
-        if (!$name)
-        {
-            $errors['name']='Името е задължително поле';
-        }
-        elseif(strlen($name)>200)
-        {
-            $errors['name']="Името трябва да бъде не повече от 200 символа";
-
+            $errors["$name"]="$name трябва да бъде не повече от $limit символа";
         }
         else
         {
-            $valid['name']=$name;
+            $valid["$name"]=$check;
         }
-
+    }
+    function check ($name, &$valid, &$errors)
+    {
+        $var=$_POST["$name"];
+        if (!$var)
+        {
+            $errors["$name"]='Полето е задължително';
+        }
+        else
+        {
+            $valid["$name"]=$var;
+        }
+    }
+    if ($_POST) 
+    {
+        validate("title", $maxSizeCourse, $valid, $errors);
+        validate("name", $maxSizeName, $valid, $errors);
         $description=$_POST['description'];
         if (!$description)
         {
             $errors['description']='Описанието е задължително поле';
         }
-        elseif(strlen($description)<10)
+        elseif(strlen($description)<$minLengthDescription)
         {
             $errors['description']="Описанието трябва да бъде не по-малко от 10 символа";
-
         }
         else
         {
             $valid['description']=$description;
         }
+        check("group", $valid, $errors);
+        check("credits", $valid, $errors);
 
-        $group=$_POST['group'];
-        if (!$description)
-        {
-            $errors['group']='Групата е задължително поле';
-        }
-        else
-        {
-            $valid['group']=$group;
-        }
-
-        $credits=$_POST['credits'];
-        if (!$description)
-        {
-            $errors['credits']='Групата е задължително поле';
-        }
-        else
-        {
-            $valid['credits']=$credits;
-        }
     }
-        if(isset($_POST['submit']))
+        if(isset($_POST['submit']) && count($valid)==$numberFileds)
         {
             $courseTitle = $_POST['title'];
             $name = $_POST['name'];
@@ -75,10 +63,16 @@
             $credits = $_POST['credits'];
             $text = $courseTitle . ", " . $name . "," . $description . ", " . $group . ", " . $credits . "\n";
             $fp = fopen('data.txt', 'a+');
-             if(fwrite($fp, $text)) 
+            if (fwrite($fp, $text)) 
              {
-                     echo 'saved';
+                echo "The information is saved. Thank you! You will be redirected to the form in 2 seconds!";
+                header( "refresh:2; url=forms.html" );
              }
-            fclose ($fp);    
+            fclose ($fp);  
+         }
+         else 
+         {
+             echo "There is invalid input! Please enter the information again! You will be redirected in 2 seconds!";
+             header( "refresh:2; url=forms.html" );
          }
 ?>
