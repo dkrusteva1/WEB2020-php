@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <title> Форми </title>
+    <script src="registration_form.js"></script>
+</head>
+
+<body>
+    <form name="form" method="post" action="register.php" onsubmit="return validate();">
+        <fieldset>
+            <legend> Информация за избираемата дисциплина </legend>
+            <label for="username">Потребителско име:</label>
+            <input id="username" name="username" require>
+            <span class="error">
+                <p id="username_error"></p>
+            </span>
+            <label for="password">Парола:</label>
+            <input id="password" name="password" require>
+            <span class="error">
+                <p id="password_error"></p>
+            </span>
+            <label for="passwordConfirm">Повторна парола:</label>
+            <input id="passwordConfirm" name="passwordConfirm" require>
+            <span class="error">
+                <p id="passwordConfirm_error"></p>
+            </span>
+            <button type="submit"> Submit </button>
+
+        </fieldset>
+    </form>
+</body>
+
+</html>
