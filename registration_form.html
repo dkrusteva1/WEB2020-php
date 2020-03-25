@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <title> Форми </title>
+    <script src="registration_form.js"></script>
+</head>
+
+<body>
+    <form name="form" method="post" action="register.php" onsubmit="return validate();">
+        <fieldset>
+            <legend> Информация за избираемата дисциплина </legend>
+            <label for="username">Потребителско име:</label>
+            <input type="text" id="username" name="username" 
+            minLength="3" maxLength="10" placeholder="Enter a username" 
+            require pattern="\w+" title="Username with length between 3 and 10. Allowed chars: letters, digits and _">
+            <span class="error">
+                <p id="username_error"></p>
+            </span>
+            <label for="password">Парола:</label>
+            <input id="password" name="password" minlength="6" placeholder="Enter password" require
+            title="Password with min length of 6. Required at least 1 char from all of the following: A-Z, a-z and 0-9">
+            <span class="error">
+                <p id="password_error"></p>
+            </span>
+            <label for="passwordConfirm">Повторна парола:</label>
+            <input id="passwordConfirm" name="passwordConfirm" minlength="6" placeholder="Confirm password" require>
+            <span class="error">
+                <p id="passwordConfirm_error"></p>
+            </span>
+            <button type="submit"> Submit </button>
+
+        </fieldset>
+    </form>
+</body>
+
+</html>
