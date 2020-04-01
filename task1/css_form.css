@@ -1,0 +1,40 @@
+body {
+    width: 400px;
+    height: 410px;
+    margin: 200px 500px 200px 500px;
+    border: thin;
+    border-style: groove;
+    background-color: whitesmoke;
+    align-content: center;
+
+}
+
+legend {
+    height: 40px;
+    width: 400px;
+    background-color: yellowgreen;
+    font: bold 15px Arial, Helvetica, sans-serif;
+    color: white;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    text-align:center;
+    line-height:2.5;
+
+}
+
+input {
+    width: 360px;
+    height: 40px;
+    margin: 10px 20px 10px 20px;
+    box-sizing: border-box;
+    text-indent: 10px;
+}
+
+button {
+    background-color: yellowgreen;
+    color: white;
+    width: 360px;
+    height: 40px;
+    text-align: center;
+    margin: 10px 20px 10px 20px;
+}
