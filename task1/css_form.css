@@ -1,0 +1,43 @@
+.form {
+    width: 400px;
+    height: 410px;
+    margin: 200px 500px 200px 500px;
+    background-color: rgb(245, 245, 240);
+    align-content: center;
+
+}
+.container{
+    border: 1px lightgray;
+    border-style: groove;
+    border-top-style:none;
+}
+legend {
+    height: 40px;
+    width: 400px;
+    background-color: rgb(151, 191, 13);
+    font: bold 15px Arial, Helvetica, sans-serif;
+    color: white;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    text-align:center;
+    line-height:2.5;
+
+}
+
+.fields {
+    width: 360px;
+    height: 40px;
+    margin: 10px 20px 10px 20px;
+    box-sizing: border-box;
+    text-indent: 10px;
+}
+
+button {
+    background-color: rgb(151, 191, 13);
+    color: white;
+    width: 360px;
+    height: 40px;
+    text-align: center;
+    margin: 10px 20px 10px 20px;
+    border:none;
+}
