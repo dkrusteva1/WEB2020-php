@@ -1,12 +1,12 @@
-body {
+.form {
     width: 400px;
     height: 410px;
     margin: 200px 500px 200px 500px;
-    background-color: whitesmoke;
+    background-color: rgb(245, 245, 240);
     align-content: center;
 
 }
-#container{
+.container{
     border: 1px lightgray;
     border-style: groove;
     border-top-style:none;
@@ -14,7 +14,7 @@ body {
 legend {
     height: 40px;
     width: 400px;
-    background-color: yellowgreen;
+    background-color: rgb(151, 191, 13);
     font: bold 15px Arial, Helvetica, sans-serif;
     color: white;
     text-transform: uppercase;
@@ -24,7 +24,7 @@ legend {
 
 }
 
-input {
+.fields {
     width: 360px;
     height: 40px;
     margin: 10px 20px 10px 20px;
@@ -33,7 +33,7 @@ input {
 }
 
 button {
-    background-color: yellowgreen;
+    background-color: rgb(151, 191, 13);
     color: white;
     width: 360px;
     height: 40px;

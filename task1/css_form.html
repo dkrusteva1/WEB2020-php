@@ -8,22 +8,22 @@
 </head>
 
 <body>
-    <form name="form" method="post" action="register.php" class="container">
+    <form name="form" method="post" action="register.php" class="form">
         <legend> регистрация </legend>
-        <div id="container">
-            <input type="email" id="Email" name="Email" minLength="3" maxLength="10" placeholder="E-mail" required
+        <div class="container" >
+            <input type="email" class="fields" id="Email" name="Email" minLength="3" maxLength="10" placeholder="E-mail" required
                 pattern="\w+" title="Email with length between 3 and 10. Allowed chars: letters, digits and _">
 
-            <input type="text" id="name" name="name" minLength="3" maxLength="10" placeholder="Име" required
+            <input type="text" id="name" class="fields" name="name" minLength="3" maxLength="10" placeholder="Име" required
                 pattern="\w+" title="Name with length between 3 and 10. Allowed chars: letters">
 
-            <input type="text" id="lastName" name="lastName" minLength="3" maxLength="10" placeholder="Фамилия" required
-                pattern="\w+" title="Ласт нame with length between 3 and 10. Allowed chars: letters">
+            <input type="text" id="lastName" class="fields"name="lastName" minLength="3" maxLength="10" placeholder="Фамилия" required
+                pattern="\w+" title="Last name with length between 3 and 10. Allowed chars: letters">
 
-            <input type="password" id="password" name="password" minlength="6" placeholder="Парола" required
+            <input type="password" id="password" class="fields" name="password" minlength="6" placeholder="Парола" required
                 title="Password with min length of 6. Required at least 1 char from all of the following: A-Z, a-z and 0-9">
 
-            <input type="password" id="passwordConfirm" name="passwordConfirm" minlength="6"
+            <input type="password" id="passwordConfirm" class="fields" name="passwordConfirm" minlength="6"
                 placeholder="Потвърди паролата" required>
             <button type="submit"> Регистрация </button>
         </div>
