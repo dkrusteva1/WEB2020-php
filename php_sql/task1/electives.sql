@@ -5,7 +5,9 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+CREATE DATABASE IF NOT EXISTS `www`;
 
+use `www`;
 
 CREATE TABLE `electives` (
   `id` int(11) NOT NULL,

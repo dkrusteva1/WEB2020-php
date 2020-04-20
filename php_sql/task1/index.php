@@ -1,10 +1,10 @@
 <?php 
+    Include "./dbOperation.php";
     $valid=array();
-    $error=array();
-    $maxSizeCourse =150;
-    $maxSizeName=200;
-    $minLengthDescription=10;
-    $numberFileds=3;
+    $errors=array();
+    $maxSizeCourse =128;
+    $maxSizeName=128;
+    $maxLengthDescription=1024;
     function validate ($name, $limit, &$valid, &$errors)
     {
         $check=$_POST["$name"];
@@ -37,37 +37,16 @@
     {
         validate("title", $maxSizeCourse, $valid, $errors);
         validate("name", $maxSizeName, $valid, $errors);
-        $description=$_POST['description'];
-        if (!$description)
-        {
-            $errors['description']='Описанието е задължително поле';
-        }
-        elseif(strlen($description)<$minLengthDescription)
-        {
-            $errors['description']="Описанието трябва да бъде не по-малко от 10 символа";
-        }
-        else
-        {
-            $valid['description']=$description;
-        }
-
+        validate("description", $maxLengthDescription, $valid, $errors);
     }
-        if(isset($_POST['submit']) && count($valid)==$numberFileds)
+        if(isset($_POST['submit']) && count($errors)==0)
         {
-          $conn  = new PDO('mysql:host=localhost;dbname=www', 'root', '');
-          $courseTitle = $_POST['title'];
-          $name = $_POST['name'];
-          $description = $_POST['description'];
-          $stmt = $conn->prepare("INSERT INTO electives (title, description, lecturer) VALUES (:courseTitle, :description, :name);");
-          $stmt->bindParam(':courseTitle', $courseTitle);
-          $stmt->bindParam(':description', $description);
-          $stmt->bindParam(':name', $name);
-          $stmt->execute();
+          query();
           echo "Success!";
          }
          else 
          {
              echo "There is invalid input! Please enter the information again! You will be redirected in 2 seconds!";
-             header( "refresh:2; url=forms.html" );
+             header( "refresh:2; url=index.html" );
          }
 ?>
