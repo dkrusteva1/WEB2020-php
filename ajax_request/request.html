@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <script defer src="request.js"></script>
+    <title> Form </title>
+</head>
+
+<body>
+    <form name="form" onsubmit="return false" method="POST">
+        <fieldset>
+            <legend> Registration form</legend>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" minLength="3" maxLength="10" placeholder="Enter a username"
+                required pattern="\w+"><br>
+                <label for="password">Password</label>
+            <input type="password" id="password" name="password" minlength="6" placeholder="Enter password"
+                required><br>
+                <label for="passwordConfirm">Confirm password:</label>
+            <input type="password" id="passwordConfirm" name="passwordConfirm" minlength="6"
+                placeholder="Confirm password" required><br>
+
+            <input type="submit" value="Submit" onclick="AjaxSubmit()">
+        </fieldset>
+    </form>
+</body>
+
+</html>
