@@ -6,11 +6,12 @@ $conn = openCon();
 $firstname = isset($_POST['firstname']) ? $_POST['firstname'] : false;
 $password = isset($_POST['password']) ? $_POST['password'] : false;
 $role = isset($_POST['role']) ? $_POST['role'] : false;
-if ( strcmp($role, "admin")==0 ) die("You are not authorized to do this.");
 
 if ($firstname && $password && $role)
 {
-  $email = $conn->prepare("SELECT COUNT(*) FROM person WHERE email = :emailPlaceholder");
+  if ( strcmp($_POST['role'], "admin")==0 ) die("You are not authorized to do this.");
+  $sql="SELECT COUNT(*) FROM person WHERE email = :emailPlaceholder";
+  $email = $conn->prepare($sql);
   $email->bindParam(':emailPlaceholder', $_POST["email"]);
   $email->execute();
   $result=$email->fetch();
