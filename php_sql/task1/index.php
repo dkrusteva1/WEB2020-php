@@ -41,12 +41,12 @@
     }
         if(isset($_POST['submit']) && count($errors)==0)
         {
-          query();
+          connection();
           echo "Success!";
          }
          else 
          {
-             echo "There is invalid input! Please enter the information again! You will be redirected in 2 seconds!";
-             header( "refresh:2; url=index.html" );
+             echo "There is invalid input! Please enter the information again!";
+             echo '<a href="index.html">Go to homepage</a>';
          }
 ?>

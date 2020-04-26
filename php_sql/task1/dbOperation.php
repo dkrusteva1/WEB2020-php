@@ -1,6 +1,6 @@
 <?php
 
-function query()
+function connection()
 {
     $host="localhost";
     $db="www";
