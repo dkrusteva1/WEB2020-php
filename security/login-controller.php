@@ -9,12 +9,14 @@
 include "db-connection.php";
 $conn = openCon();
 
-$sql = "SELECT * from person where email = '" . htmlentities($_POST["email"]) . "' and password = '" . htmlentities($_POST["password"]) . "';";
-
-$resultSet = $conn->query($sql) or die("Failed to query from DB!");
-
-$firstrow = $resultSet->fetch(PDO::FETCH_ASSOC) or die ("Not valid credentials.");
-
+$email=$_POST["email"];
+$password=$_POST["password"];
+$sql = "SELECT * from person where email=:emailPlaceholder AND password=:passwordPlaceholder";
+$stmt=$conn->prepare($sql);
+$stmt->bindParam(':emailPlaceholder', $email);
+$stmt->bindParam(':passwordPlaceholder', $password);
+$stmt->execute();
+$firstrow = $stmt->fetch(PDO::FETCH_ASSOC) or die ("Not valid credentials.");
 echo("Hello " . $firstrow['firstname'] . " you are now logged in.");
 
 session_start();

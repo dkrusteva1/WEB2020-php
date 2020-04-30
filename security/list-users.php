@@ -14,18 +14,19 @@ if (!isset($_SESSION["email"])) {
 include "db-connection.php";
 $conn = openCon();
 
+$email=$_SESSION["email"];
 
-
-$sql = "SELECT * from person where email = '" . $_SESSION["email"] . "';";
-$resultSet=$conn->prepare($sql);
-$resultSet -> execute() or die("Failed to query from DB!");
-$firstrow = $resultSet->fetch(PDO::FETCH_ASSOC) or die ("User not found.");
+$sql = "SELECT * from person where email =:emailPlaceholder";
+$stmt=$conn->prepare($sql);
+$stmt->bindParam(":emailPlaceholder", $email);
+$stmt -> execute() or die("Failed to query from DB!");
+$firstrow = $stmt->fetch(PDO::FETCH_ASSOC) or die ("User not found.");
 
 $role=$firstrow['role'];
 
 if (strcmp($role, "admin")!=0)
 {
-    die("Only admins are allowed");
+    die("You are not authorized to do this!");
 }
 
 $sql = "SELECT * from person;";
