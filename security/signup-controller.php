@@ -14,7 +14,7 @@ $role=$_POST["role"];
 
 if ($firstname && $password && $role)
 {
-  if ( strcmp($_POST['role'], "student")!=0 && strcmp($_POST['role'], "teacher") ) die("You are not authorized to do this.");
+  if ( strcmp($_POST['role'], "student")!=0 && strcmp($_POST['role'], "teacher")!=0 ) die("You are not authorized to do this.");
   $sql="SELECT COUNT(*) FROM person WHERE email = :emailPlaceholder";
   $email = $conn->prepare($sql);
   $email->bindParam(':emailPlaceholder', $_POST["email"]);
