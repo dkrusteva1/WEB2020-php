@@ -11,7 +11,7 @@ if (!preg_match($regex, $name) && !preg_match($fileName, $name))
 }
 $electiveDictionary = getElectiveByID($name);
 $checkIfExists=$electiveDictionary["title"];
-if (!$checkIfExists)
+if (!$checkIfExists && !preg_match($fileName, $name))
 {
     echo "Please enter existing ID!";
 }
@@ -21,13 +21,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     validate('name', MAX_LENGTH_LECTURER_NAME, $valid, $errors);
     validate('description', MAX_LENGTH_DESCRIPTION, $valid, $errors);
     
-   if (empty($checkIfExists)){
-    if (count($errors)==0){
-        addElective();
-        echo "You have successfully added new elective!";
-       }else{
-           echo "Enter valid information, please!";
-       }
+    if (empty($checkIfExists)){
+        if (count($errors)==0){
+            addElective();
+            echo "You have successfully added new elective!";
+        }else{
+            echo "Enter valid information, please!";
+        }
    }
     else{
         if (count($errors)==0){

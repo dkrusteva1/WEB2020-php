@@ -1,46 +1,66 @@
 <?php
 
 function getElectiveByID($electiveID){
-    $conn=connection();
-    $stmt = $conn->prepare("SELECT * FROM electives WHERE id=:idPlaceholder limit 1;");
-    $stmt->bindParam(':idPlaceholder', $electiveID);
-    $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+    try{
+        $conn=connection();
+        $stmt = $conn->prepare("SELECT * FROM electives WHERE id=:idPlaceholder limit 1;");
+        $stmt->bindParam(':idPlaceholder', $electiveID);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    catch(PDOException $error) {
+        die($error->getMessage());
+    }
 }
 
 
 function updateElectiveByID($electiveID){
-    $conn=connection();
-    $courseTitle = $_POST['title'];
-    $name = $_POST['name'];
-    $description = $_POST['description'];
-    $stmt=$conn->prepare("UPDATE electives SET title=:titlePlaceholder, description=:descriptionPlaceholder, lecturer=:lecturerPlaceholder WHERE id=:idPlaceholder;");
-    $stmt->bindParam(':idPlaceholder', $electiveID);
-    $stmt->bindParam(':titlePlaceholder', $courseTitle);
-    $stmt->bindParam(':descriptionPlaceholder', $description);
-    $stmt->bindParam(':lecturerPlaceholder', $name);
-    $stmt->execute();
+    try{
+        $conn=connection();
+        $courseTitle = $_POST['title'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $stmt=$conn->prepare("UPDATE electives SET title=:titlePlaceholder, description=:descriptionPlaceholder, lecturer=:lecturerPlaceholder WHERE id=:idPlaceholder;");
+        $stmt->bindParam(':idPlaceholder', $electiveID);
+        $stmt->bindParam(':titlePlaceholder', $courseTitle);
+        $stmt->bindParam(':descriptionPlaceholder', $description);
+        $stmt->bindParam(':lecturerPlaceholder', $name);
+        $stmt->execute();
+    }
+    catch(PDOException $error) {
+        die($error->getMessage());
+    }
 }
 
 function addElective (){
-    $conn=connection();
-    $courseTitle = $_POST['title'];
-    $name = $_POST['name'];
-    $description = $_POST['description'];
-    $stmt = $conn->prepare("INSERT INTO electives (title, description, lecturer) VALUES (:courseTitle, :description, :name);");
-    $stmt->bindParam(':courseTitle', $courseTitle);
-    $stmt->bindParam(':description', $description);
-    $stmt->bindParam(':name', $name);
-    $stmt->execute();
+    try{
+        $conn=connection();
+        $courseTitle = $_POST['title'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $stmt = $conn->prepare("INSERT INTO electives (title, description, lecturer) VALUES (:courseTitle, :description, :name);");
+        $stmt->bindParam(':courseTitle', $courseTitle);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':name', $name);
+        $stmt->execute();
+    }
+    catch(PDOException $error) {
+        die($error->getMessage());
+    }
 }
 
 function connection(){
-    $host="localhost";
-    $db="www";
-    $user="root";
-    $password="";
-    $conn  = new PDO("mysql:host=$host; dbname=$db", $user, $password);
-    return $conn;
+    try{
+        $host="localhost";
+        $db="www";
+        $user="root";
+        $password="";
+        $conn  = new PDO("mysql:host=$host; dbname=$db", $user, $password);
+        return $conn;
+    }
+    catch(PDOException $error) {
+        die($error->getMessage());
+    }
 }
 
 ?>
