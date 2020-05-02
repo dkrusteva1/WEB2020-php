@@ -1,0 +1,64 @@
+.container{
+    display:flex;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+main{
+    width:50%;
+}
+.buttons{
+    float: right;
+}
+h1{
+    color:rgb(151, 191, 14)
+}
+.info{
+    font-style: italic;
+}
+.button-color{
+    background-color: rgb(151, 191, 14);
+    color:white;
+}
+.button-shape{
+    border:1px solid rgb(151, 191, 14);
+    border-radius: 10px;
+    height: 25px; 
+}
+.navigation{
+    text-transform: uppercase;
+    width:25%;
+    margin:30px 10px 0 50px;
+    height:150px;
+}
+a{
+    display: block; 
+	color: grey;
+	text-decoration: none;
+	font-size: 17px;
+    padding:10px 15px;
+    border-bottom: 1px solid grey;
+}
+.active{
+    color: #FFFFFF;
+    background-color: rgb(151, 191, 14);
+}
+textarea
+{
+    width:100%; 
+    height: 100px; 
+    border-radius:8px;
+    border:1px solid grey;
+    resize: none; 
+    padding:10px 0px 0px 10px;
+}
+button[name="cancel"]
+{
+    background-color: white;
+    color: rgb(151, 191, 14);
+}
+.name{
+    color:rgb(92, 92, 233);
+}
+.button-margin{
+    margin-right: 10px;
+}
