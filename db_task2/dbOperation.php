@@ -1,21 +1,16 @@
 <?php
 
 function getElectiveByID($electiveID){
-    try{
         $conn=connection();
         $stmt = $conn->prepare("SELECT * FROM electives WHERE id=:idPlaceholder limit 1;");
         $stmt->bindParam(':idPlaceholder', $electiveID);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-    catch(PDOException $error) {
-        die($error->getMessage());
-    }
+        $conn = null;
 }
 
 
 function updateElectiveByID($electiveID){
-    try{
         $conn=connection();
         $courseTitle = $_POST['title'];
         $name = $_POST['name'];
@@ -26,14 +21,10 @@ function updateElectiveByID($electiveID){
         $stmt->bindParam(':descriptionPlaceholder', $description);
         $stmt->bindParam(':lecturerPlaceholder', $name);
         $stmt->execute();
-    }
-    catch(PDOException $error) {
-        die($error->getMessage());
-    }
+        $conn = null;
 }
 
 function addElective (){
-    try{
         $conn=connection();
         $courseTitle = $_POST['title'];
         $name = $_POST['name'];
@@ -43,24 +34,18 @@ function addElective (){
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':name', $name);
         $stmt->execute();
-    }
-    catch(PDOException $error) {
-        die($error->getMessage());
-    }
+        $conn = null;
+
 }
 
 function connection(){
-    try{
+
         $host="localhost";
         $db="www";
         $user="root";
         $password="";
         $conn  = new PDO("mysql:host=$host; dbname=$db", $user, $password);
         return $conn;
-    }
-    catch(PDOException $error) {
-        die($error->getMessage());
-    }
 }
 
 ?>
